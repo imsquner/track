@@ -1,0 +1,40 @@
+# STM32 + Keil (uVision) project
+# Keep source and shared project config, ignore local/user/build artifacts.
+
+# Build outputs
+Objects/
+Listings/
+
+# Keil generated artifacts
+*.axf
+*.bin
+*.hex
+*.map
+*.lst
+*.o
+*.d
+*.crf
+*.dep
+*.lnp
+*.htm
+
+# uVision user/local configuration (often contains local paths or usernames)
+*.uvguix.*
+*.uvoptx
+
+# Debug and local run configuration
+DebugConfig/
+*.dbgconf
+
+# Temporary / backup files
+*.bak
+*.tmp
+*.log
+~$*
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/

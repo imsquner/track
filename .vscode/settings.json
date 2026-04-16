@@ -1,0 +1,17 @@
+{
+  "C_Cpp.default.configurationProvider": "ms-vscode.cpptools",
+  "C_Cpp.errorSquiggles": "enabled",
+  "files.associations": {
+    "*.s": "asm",
+    "stm32f10x*.h": "c"
+  },
+  "files.exclude": {
+    "**/Objects": true,
+    "**/Listings": true
+  },
+  "search.exclude": {
+    "**/Objects": true,
+    "**/Listings": true
+  },
+  "editor.formatOnSave": false
+}

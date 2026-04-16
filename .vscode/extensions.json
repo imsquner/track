@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "ms-vscode.cpptools",
+    "ms-vscode.cpptools-extension-pack",
+    "marus25.cortex-debug",
+    "xaver.clang-format",
+    "trond-snekvik.gnu-mapfiles",
+    "eamodio.gitlens"
+  ]
+}

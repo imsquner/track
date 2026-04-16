@@ -1,0 +1,35 @@
+{
+  "version": 4,
+  "configurations": [
+    {
+      "name": "STM32F103",
+      "intelliSenseMode": "windows-gcc-arm",
+      "compilerPath": "",
+      "cStandard": "c11",
+      "cppStandard": "c++17",
+      "defines": [
+        "USE_STDPERIPH_DRIVER",
+        "STM32F10X_MD"
+      ],
+      "includePath": [
+        "${workspaceFolder}/.vscode/fake_libc_include",
+        "${workspaceFolder}/Hardware",
+        "${workspaceFolder}/Library",
+        "${workspaceFolder}/Start",
+        "${workspaceFolder}/System",
+        "${workspaceFolder}/User"
+      ],
+      "browse": {
+        "path": [
+          "${workspaceFolder}/.vscode/fake_libc_include",
+          "${workspaceFolder}/Hardware",
+          "${workspaceFolder}/Library",
+          "${workspaceFolder}/Start",
+          "${workspaceFolder}/System",
+          "${workspaceFolder}/User"
+        ],
+        "limitSymbolsToIncludedHeaders": true
+      }
+    }
+  ]
+}

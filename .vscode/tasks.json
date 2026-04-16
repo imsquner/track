@@ -1,0 +1,39 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Keil: Clean Outputs",
+      "type": "shell",
+      "command": "./keilkill.bat",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Keil: Build Project",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-Command",
+        "$uv4 = (Get-Command UV4.exe -ErrorAction SilentlyContinue).Path; if (-not $uv4) { $uv4 = 'C:/Keil_v5/UV4/UV4.exe' }; if (-not (Test-Path $uv4)) { throw 'UV4.exe not found. Install Keil MDK or add UV4.exe to PATH.' }; & $uv4 -b Project.uvprojx -j0"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Keil: Rebuild Project",
+      "dependsOn": [
+        "Keil: Clean Outputs",
+        "Keil: Build Project"
+      ],
+      "dependsOrder": "sequence",
+      "problemMatcher": []
+    }
+  ]
+}

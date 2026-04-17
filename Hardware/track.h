@@ -5,8 +5,8 @@
 #include "Motor.h"
 #include "LightSensor.h"
 
-#define STRAIGHT_SPEED  82
-#define TURN_SPEED      62
+#define STRAIGHT_SPEED  46
+#define TURN_SPEED      42
 
 void Track_Init(void);
 void Track_Run(void);

@@ -11,13 +11,13 @@ static char* ZoneText(uint8_t zone)
 {
 	switch (zone)
 	{
-		case 0: return "ARC ";
-		case 1: return "GRID";
-		case 2: return "OBST";
-		case 3: return "HORN";
-		case 4: return "STOP";
-		case 5: return "DONE";
-		default: return "UNKN";
+		case 0: return "ZONE_ARC      ";
+		case 1: return "ZONE_GRID     ";
+		case 2: return "ZONE_OBSTACLE ";
+		case 3: return "ZONE_HORN     ";
+		case 4:
+		case 5: return "ZONE_STOP/DONE";
+		default: return "ZONE_UNKNOWN  ";
 	}
 }
 
@@ -25,12 +25,12 @@ static char* ActionText(uint8_t action)
 {
 	switch (action)
 	{
-		case 0: return "FLW";
-		case 1: return "LFT";
-		case 2: return "RGT";
-		case 3: return "FWD";
-		case 4: return "STP";
-		default: return "UNK";
+		case 0: return "STRAIGHT";
+		case 1: return "LEFT    ";
+		case 2: return "RIGHT   ";
+		case 3: return "FORWARD ";
+		case 4: return "STOP    ";
+		default: return "UNKNOWN ";
 	}
 }
 
@@ -57,26 +57,21 @@ int main(void)
 
 		Track_Run();
 
-		OLED_ShowString(1,1,"S:");
-		OLED_ShowBinNum(1,3, Track_GetFilteredState(), 5);
-		OLED_ShowString(1,9,"E:");
-		OLED_ShowHexNum(1,11, Track_GetEventFlags(), 1);
+		/* Part 1: direct 5-bit sensor state display. */
+		OLED_ShowString(1,1,"SENSOR:");
+		OLED_ShowBinNum(1,8, sensorState, 5);
 
-		OLED_ShowString(2,1,"Z:");
-		OLED_ShowString(2,3, ZoneText(Track_GetZone()));
-		OLED_ShowString(2,8,"P:");
-		OLED_ShowNum(2,10, Track_GetGridPhase(), 2);
+		/* Part 2: current action state (SYM). */
+		OLED_ShowString(2,1,"SYM:");
+		OLED_ShowString(2,5, ActionText(Track_GetAction()));
 
-		OLED_ShowString(3,1,"A:");
-		OLED_ShowString(3,3, ActionText(Track_GetAction()));
-		OLED_ShowString(3,7,"L");
-		OLED_ShowSignedNum(3,8, Track_GetSpeedA(), 3);
-		OLED_ShowSignedNum(3,12, Track_GetSpeedB(), 3);
+		/* Part 3: current route zone. */
+		OLED_ShowString(3,1,ZoneText(Track_GetZone()));
 
-		OLED_ShowString(4,1,"R:");
-		OLED_ShowBinNum(4,3, sensorState, 5);
-		OLED_ShowString(4,9,"F:");
-		OLED_ShowBinNum(4,11, Track_GetFilteredState(), 5);
+		/* Keep line 4 for speed telemetry. */
+		OLED_ShowString(4,1,"SPD:");
+		OLED_ShowSignedNum(4,5, Track_GetSpeedA(), 3);
+		OLED_ShowSignedNum(4,10, Track_GetSpeedB(), 3);
 		
 		Delay_ms(20);
 	}
